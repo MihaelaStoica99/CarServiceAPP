@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">  
+<%- include("./partials/head.ejs") %>
+
+<head>
+  <link rel="stylesheet" src="style.css">
+</head>
+
+<body>
+<%- include("./partials/nav.ejs") %>
+
+<div class="cars-data">
+  <form action="http://localhost:3002/cars-search" method="POST">
+    <label for="brand">Choose a brand:</label>
+    <select id="brand" name="brand">
+      <option value="" selected disabled hidden>----</option>
+      <option value="Audi">Audi</option>
+      <option value="Volkswagen">Volkswagen</option>
+      <option value="Kia">Kia</option>
+      <option value="Ford">Ford</option>
+      <option value="all">All</option>
+    </select>
+    <a class="search">
+      <input type="submit" value="search">
+    </a>
+  </form>
+
+  <h2>All Cars</h2>
+  <table border="1">
+    <tr>
+      <th>No.</th>
+      <th>Brand</th>
+      <th>Model</th>
+      <th>Year of manufacture</th>
+      <th>Owner</th>
+    </tr>
+    <% if(userData.length!=0){ var i=1; userData.forEach(function(data){ %>
+    <tr>
+      <td><%=i %></td>
+      <td><%=data.Marca %></td>
+      <td><%=data.Model%></td>
+      <td><%=data.An_fabricatie%></td>
+      <td><%=data.Nume_proprietar%></td>
+    </tr>
+      <% i++; }) %>
+        <% } else{ %>
+    <tr>
+      <td colspan="7">No Data Found</td>
+    </tr>
+       <% } %>
+  </table>
+</div>
+
+</body>
+</html>

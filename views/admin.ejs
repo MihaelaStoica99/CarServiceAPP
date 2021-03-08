@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+ 
+<body>
+<%- include("./partials/nav.ejs") %>
+
+<div>
+  <h2>General information</h2>
+  <table>
+    <tr>
+      <td>Number of ongoing interventions</td>
+      <td>
+      <% if(data1.length!=0){ var i=1; data1.forEach(function(x){ %>
+        <%=x.nr_interventii%>
+          <% i++; })} %>
+      </td>
+    </tr>
+    <tr>
+      <td>Employees who don't have any assigned interventions</td>
+      <td>
+        <% if(data2.length!=0){ var i=1; data2.forEach(function(x2){ %>
+          <%=x2.nr_angajati%>
+            <% i++; })} %>
+      </td>
+    </tr>
+    <tr>
+      <td>Total receipts for this month (so far)</td>
+      <td>
+        <% if(data3.length!=0){ var i=1; data3.forEach(function(x3){ %>
+          <%=x3.nr_incasari_luna%>
+            <% i++; })} %>
+      </td>
+    </tr>
+    <tr>
+      <td>Total receipts for this year (so far)</td>
+      <td>
+        <% if(data4.length!=0){ var i=1; data4.forEach(function(x4){ %>
+          <%=x4.nr_incasari_an%>
+            <% i++; })} %>
+      </td>
+    </tr>
+  </table>
+</div>
+<%- include("./partials/footer.ejs") %>
+</body>
+
+</html>

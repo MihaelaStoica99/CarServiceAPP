@@ -1,0 +1,143 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<%- include("./partials/nav.ejs") %>
+
+<div class="users-data">
+  <h2>All Users</h2>
+  <table border="1">
+    <tr>
+      <th>No.</th>
+      <th>UserName</th>
+      <th>Password</th>
+    </tr>
+    <% if(userData.length!=0){ var i=1; userData.forEach(function(data){ %>
+    <tr>
+      <td><%=i %></td>
+      <a class="edit-text">
+        <td><input type="text" id="<%= data.UserID %>" value="<%= data.UserName %>" disabled></td>
+        <td><input type="text" id="<%= data.UserID %>" value="<%= data.Parola %>" disabled></td>
+      </a>
+      <th>
+        <a class="edit" data-ed="<%= data.UserID %>">
+          <img src="edit.svg" alt="edit.icon">
+        </a>
+      </th>
+      <th>
+        <a class="save" data-ed="<%= data.UserID %>">
+          <input type="button" value="Save changes">
+        </a>
+      </th>
+      <th>
+        <a class="delete" data-doc="<%= data.UserID %>">
+          <img src="trashcan.svg" alt="delete.icon">
+        </a>
+      </th>
+    </tr>
+      <% i++; }) %>
+         <% } else{ %>
+    <tr>
+      <td colspan="7">No Data Found</td>
+    </tr>
+        <% } %>
+  </table>
+
+  <br><h2>Statistics</h2><br>
+  <div class = "design">
+    Customers who do not have an account on the site
+    <input type="button" value="show" onclick="myFunction()">
+    <div id="myDIV">
+      <table border="1">
+        <tr>
+          <th>No.</th>
+          <th>First Name</th>
+          <th>Second Name</th>
+        </tr>
+        <% if(searchData.length!=0){ var i=1; searchData.forEach(function(dataS){ %>
+        <tr>
+          <td><%=i %></td>
+          <td><%= dataS.Prenume%></td>
+          <td><%= dataS.Nume%></td>
+        </tr>
+          <% i++; }) %>
+            <% } else{ %>
+        <tr>
+          <td colspan="7">No Data Found</td>
+        </tr>
+            <% } %>
+      </table>
+    </div>
+  </div>
+</div>
+
+  <script>
+    let change = true;
+    function myFunction() {
+      var x = document.getElementById("myDIV");
+      if (change) {
+      x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+      change = !change;
+    }
+
+    document.querySelectorAll("a.delete").forEach(element => {
+      element.addEventListener('click', (e) => {
+      
+        if (confirm("Are you sure you want to delete this user from database?")) {         
+        let endpoint = `/users-list/${element.dataset.doc}`;
+        fetch(endpoint, {
+          method: 'DELETE',
+        })
+          .then(response => response.json())
+          .then(data => window.location.href = data.redirect)
+          .catch(err => console.log(err));
+      }
+      });
+    
+    });
+
+    document.querySelectorAll("a.edit").forEach(element => {
+      element.addEventListener('click', (e) => {
+        let id = element.dataset.ed;
+        console.log(id);
+        document.querySelectorAll(`input#${CSS.escape(id)}`).forEach(element => {
+          element.disabled = false;
+          console.log(element.value);
+        });
+      });
+    });
+
+    document.querySelectorAll("a.save").forEach(element => {
+      element.addEventListener('click', (e) => {
+        let endpoint = `/users-list/${element.dataset.ed}`;
+        let id = element.dataset.ed;
+        let elementArray =  document.querySelectorAll(`input#${CSS.escape(id)}`);
+        elementArray[0].disabled = true;
+        elementArray[1].disabled = true;
+        fetch(endpoint, {
+          method: 'PUT',
+          headers: {
+            "Content-Type": 'application/json'
+          },
+          body:JSON.stringify({
+            userName: elementArray[0].value,
+            parola: elementArray[1].value,
+            id: id
+          })
+        })
+          .then(response => response.json())
+          .then(data => {console.log(data); window.location.href = data.redirect})
+          .catch(err => console.log(err));
+      });
+    });
+  </script>
+  
+</body>
+</html>
