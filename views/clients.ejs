@@ -1,0 +1,147 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+ 
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<%- include("./partials/nav.ejs") %>
+
+<div class="clients-data">
+  <h2>All Clients</h2>
+  <table border="1">
+    <tr>
+      <th>No.</th>
+      <th>First Name</th>
+      <th>Second Name</th>
+      <th>Telephone</th>
+      <th>Email</th>
+    </tr>
+    <% if(userData.length!=0){ var i=1; userData.forEach(function(data){ %>
+    <tr>
+      <td><%=i %></td>
+      <td><%=data.Prenume%></td>
+      <td><%=data.Nume%></td>
+      <td><%=data.Telefon%></td>
+      <td><%=data.Email%></td>
+   </tr>
+      <% i++; }) %>
+        <% } else{ %>
+    <tr>
+      <td colspan="7">No Data Found</td>
+    </tr>
+        <% } %>
+  </table>
+
+  <br><h2>Statistics</h2><br>
+  <div class="design">
+    Customers who have cars under intervention at the moment
+    <input type="button" value="show" onclick="myFunction()">
+    <div id="myDIV">
+      <table border="1">
+        <tr>
+          <th>No.</th>
+          <th>First Name</th>
+          <th>Second Name</th>
+        </tr>
+        <% if(searchData.length!=0){ var i=1; searchData.forEach(function(dataS){ %>
+        <tr>
+          <td><%=i %></td>
+          <td><%= dataS.Prenume%></td>
+          <td><%= dataS.Nume%></td>
+        </tr>
+          <% i++; }) %>
+            <% } else{ %>
+        <tr>
+          <td colspan="7">No Data Found</td>
+        </tr>
+           <% } %>
+        </table>
+    </div>
+  </div><br>
+  <div class="design">
+    Total revenues per client for 2020
+    <input type="button" value="show" onclick="myFunction2()">
+    <div id="myDIV2">
+      <table border="1">
+        <tr>
+          <th>No.</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Total revenues</th>
+        </tr>
+        <% if(searchData2.length!=0){ var i=1; searchData2.forEach(function(dataS2){ %>
+        <tr>
+          <td><%=i %></td>
+          <td><%= dataS2.Prenume%></td>
+          <td><%= dataS2.Nume%></td>
+          <td><%= dataS2.total_facturi%></td>
+        </tr>
+          <% i++; }) %>
+            <% } else{ %>
+        <tr>
+          <td colspan="7">No Data Found</td>
+        </tr>
+            <% } %>
+      </table>
+    </div>
+  </div><br>
+  <form action=http://localhost:3002/clients-search method="POST">
+    <label>The client who brought in </label>
+
+    <select id="month" name="month">
+      <option value="01">January</option>
+      <option value="02">February</option>
+      <option value="03">March</option>
+      <option value="04">April</option>
+      <option value="05">May</option>
+      <option value="06">June</option>
+      <option value="07">July</option>
+      <option value="08">August</option>
+      <option value="09">September</option>
+      <option value="10">October</option>
+      <option value="11">November</option>
+      <option value="12">December</option>
+    </select>
+
+    <select id="year" name="year">
+      <option value="2021">2021</option>
+      <option value="2020">2020</option>
+      <option value="2019">2019</option>
+    </select>
+
+    <label>revenues higher than the average revenues for that month</label>
+
+    <a class="search">
+      <input type="submit" value="search">
+    </a>
+  </form>
+</div>
+  <script>
+    let change = true;
+    function myFunction() {
+      var x = document.getElementById("myDIV");
+      console.log(x.style.display);
+      if (change) {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+      change = !change;
+    }
+    let change2 = true;
+    function myFunction2() {
+      var x = document.getElementById("myDIV2");
+      console.log(x.style.display);
+      if (change2) {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+    }
+    change2 = !change2;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+body {
+  font-family: 'Noto Serif', serif;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+p, h1, h2, h3, a, ul {
+  color: #222;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+/* nav & footer styles */
+nav {
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+}
+
+nav ul {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav li {
+  list-style-type: none;
+  margin-left: 20px;
+}
+
+nav h1 {
+  font-size: 3em;
+}
+
+nav p, nav a {
+  color: #777;
+  font-weight: 300;
+}
+
+footer {
+  color: #777;
+  margin: 80px auto 20px;
+  text-align: center;
+}
+
+/*logout button styles*/
+.exit input[type="button"]  {
+  background-color: #044688;
+  border: 0;
+  border-radius: 10px 10px 10px 10px;
+  box-sizing: border-box;
+  color: #ffffff; 
+  cursor: pointer;
+  font-weight: bold;
+  padding: 15px;
+  width: 15%;
+}
+
+/*tables styles*/
+table { 
+  border: 1px solid #ddd; 
+  border-collapse: collapse; 
+  text-align: left; 
+  width: 50%; 
+} 
+
+.table-data { 
+  position: relative; 
+  left:150px; 
+  top:100px; 
+} 
+
+th, td { 
+  padding: 15px; 
+} 
+
+.delete:hover {
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.edit:hover {
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+  
+.save input[type="button"] {
+  background-color: #19ac5b;
+  border: 0;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 8px;
+  width: 100%;
+}
+
+.add input[type="submit"] {
+  background-color:#19ac5b;;
+  border: 0;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 6px;
+  width: 10%;
+}
+
+ /*search button styles*/
+.search input[type = "submit"] {
+  background-color:#19ac5b;
+  border: 0;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 6px;
+  width: 10%;
+ }
+
+ /*show button styles*/
+.design input[type = "button"] {
+  background-color:#aa2f09;
+  border: 0;
+  border-radius: 10px 10px 10px 10px;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 4px;
+  width: 5%;
+}
+
+  /*back button styles*/
+a.back input[type="button"] {
+  background-color: #0d6d7e;
+  border: 0;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 6px;
+  width: 10%;
+}
+
+/*login & register form styles*/  
+.form {
+  font-family: Tahoma, Geneva, sans-serif;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 150px;
+  width: 300px;
+}
+
+.form h1 {
+  color: #4d4d4d;
+  font-size: 24px;
+  padding: 20px 0 20px 0;
+  text-align: center;
+}
+
+.form input[type="password"],
+.form input[type="text"] {
+  border: 1px solid #dddddd;
+  box-sizing:border-box;
+  margin-bottom: 15px;
+  padding: 15px;
+  width: 100%;
+}
+
+.form input[type="submit"] {
+  background-color: #19af69;
+  border: 0;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 15px;
+  width: 100%;
+}
+
+  /*first page styles*/
+.col-container {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  height: 300px;
+  width: 200px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+  transition: 0.3s
+ 
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.avatar {
+  border-radius: 10px 10px 0 0;
+  height: 180px;
+}
+
+.container {
+  padding: 7px 16px;
+}
+
+.active input[type="button"] {
+  background-color: #19ac5b;
+  border: 0;
+  border-radius: 10px 10px 10px 10px;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 6px;
+  width: 40%;
+}
+
+h1.first-page {
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: 50px;
+}
+/*statistic information styles*/
+#myDIV {
+  display: none;
+}
+#myDIV2 {
+  display: none;
+}
+#myDIV3 {
+  display: none;
+}

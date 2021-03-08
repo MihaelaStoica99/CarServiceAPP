@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <title>Register Form</title>
+</head>
+
+<body>
+<div class="form">
+  <h1>Register Form</h1>
+  <form action="http://localhost:3002/registration" method="POST">
+	<input type="text" id="loginUser" name="username" placeholder="Username" required>
+	<input type="password" id="loginPassword" name="password" placeholder="Password" required>
+	<input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
+	<input type="submit" value="Register" onclick="myFunction()">
+  </form>
+  <p>Already have an account? <a href="http://localhost:3002/login">Login</a>.</p>
+</div>
+
+  <script>
+	function myFunction() {
+	  alert("User inserted successfully into the database!");
+	}
+  </script>
+</body>
+
+</html>

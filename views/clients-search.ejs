@@ -1,0 +1,45 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+  
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<%- include("./partials/nav.ejs") %>
+
+<div class="clients-data">
+  <h2>Statistics</h2><br>
+  <div>
+    The client who brought in <%=objData.month%>
+      <%=objData.year%>
+      revenues higher than the average revenues for that month is
+  </div><br>
+  <div>
+    <table border="1">
+      <tr>
+        <th>First Name</th>
+        <th>Second Name</th>
+        <th>Total revenues</th>
+      </tr>
+      <% if(searchData.length!=0){ var i=1; searchData.forEach(function(dataS){ %>
+      <tr>
+        <td><%= dataS.Prenume%></td>
+        <td><%= dataS.Nume%></td>
+        <td><%= dataS.total_incasari%></td>
+      </tr>
+        <% i++; }) %>
+          <% } else{ %>
+      <tr>
+        <td colspan="7">There were no revenues this month</td>
+      </tr>
+          <% } %>
+    </table>
+  </div><br>
+    <a class="back" href="http://localhost:3002/clients">
+        <input type="button" value="Back">
+    </a>
+</div>
+
+</body>
+</html>

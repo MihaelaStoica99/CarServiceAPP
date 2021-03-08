@@ -1,0 +1,56 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<head>
+  <link rel="stylesheet" src="style.css">
+</head>
+
+<body>
+<%- include("./partials/nav.ejs") %>
+
+<div class="interventions-data">
+  <form action="http://localhost:3002/interventions-search" method="POST">
+    <label for="status">Choose the status of the intervention:</label>
+    <select id="status" name="status">
+      <option value="" selected disabled hidden>----</option>
+      <option value="terminat">terminat</option>
+      <option value="in lucru">in lucru</option>
+      <option value="neatribuit">neatribuit</option>
+      <option value="all">all</option>
+    </select>
+    <a class="search">
+        <input type="submit" value="search">
+    </a>
+  </form> 
+  <br><h2>Interventions</h2><br>
+  <table border="1">
+    <tr>
+      <th>No.</th>
+      <th>Intervention code</th>
+      <th>Date of entry into service</th>
+      <th>Remarks</th>
+      <th>Status</th>
+      <th>Invoice issuance date</th>
+      <th>Total invoice</th>
+    </tr>
+    <% if(userData.length!=0){ var i=1; userData.forEach(function(data){ %>
+    <tr>
+      <td><%=i %></td>
+      <td><%=data.Cod_interventie %></td>
+      <td><%=data.Data %></td>
+      <td><%=data.Observatii %></td>
+      <td><%=data.Status%></td>
+      <td><%=data.Data_eliberarii%></td>
+      <td><%=data.Total%></td>
+    </tr>
+      <% i++; }) %>
+        <% } else{ %>
+    <tr>
+      <td colspan="7">No Data Found</td>
+    </tr>
+       <% } %>
+  </table>
+</div>
+</body>
+
+</html>
