@@ -19,6 +19,7 @@ The purpose of this application was to **learn new technologies** and to get fam
 * node.js -  v15.2.1
 * EJS - v3.1.5
 * Express - v4.17.1
+* SQL
 
 ## Setup
 
