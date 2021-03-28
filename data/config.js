@@ -6,7 +6,7 @@ const sqlConfig = {
     type: "default",
     options: {
       userName: "sa",
-      password: "quibusque",
+      password: "*******",
       database: "ServiceMasini",
     },
   },
